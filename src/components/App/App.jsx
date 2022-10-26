@@ -1,6 +1,12 @@
-export const App = () => {
+import LoginForm from '../LoginForm/LoginForm';
+
+const App = () => {
   return (
-    <div>
-    </div>
+    <>
+      <LoginForm />
+    </>
+
   );
 };
+
+export default App;
