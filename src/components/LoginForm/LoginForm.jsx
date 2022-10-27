@@ -3,30 +3,64 @@ import { Component } from "react";
 
 class LoginForm extends Component{
 
+    state = {
+        contacts: [],
+        filter: '',
+        name: '',
+        number: ''
+    };
+
+    handleChange = event => {
+        const {name, value} = event.target
+        console.log(event.target.value);
+        this.setState({ [name]: value });
+    };
+
+    handleSubmit = event => {
+        event.preventDefault();
+        console.log(this.state)
+      
+    }
+
     render() {
-        return(
-        <form>
+        const { name, number} = this.state;
+        return (
+            <div>
+                <form onSubmit={this.handleSubmit}>
             <div>
                 <label htmlFor="input Name">
                     Name
                 </label>
-                <input
-                    type="text"
+                    <input
+                        onChange = {this.handleChange}
+                        type="text"
+                        value={name}
                     name="name"
                     pattern="^[a-zA-Zа-яА-Я]+(([' -][a-zA-Zа-яА-Я ])?[a-zA-Zа-яА-Я]*)*$"
                     title="Name may contain only letters, apostrophe, dash and spaces. For example Adrian, Jacob Mercer, Charles de Batz de Castelmore d'Artagnan"
                     required
-                />
-                <input
+                    />
+                <label htmlFor="input Name">
+                    Number
+                </label>
+                    <input
+                        onChange = {this.handleChange}
                     type="tel"
-                    name="number"
+                        name="number"
+                        value={number}
                     pattern="\+?\d{1,4}?[-.\s]?\(?\d{1,3}?\)?[-.\s]?\d{1,4}[-.\s]?\d{1,4}[-.\s]?\d{1,9}"
                     title="Phone number must be digits and can contain spaces, dashes, parentheses and can start with +"
                     required
                 />
-                <button type="button">Add Contact</button>
+                <button type="submit">Add Contact</button>
             </div>
-        </form>
+                </form>
+                <div>
+                    <h2>Contacts</h2>
+                    <div>{name}: {number}</div>
+                </div>
+            </div>
+        
     )}
 };
 
