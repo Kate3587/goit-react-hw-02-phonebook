@@ -1,10 +1,11 @@
 import React from "react";
 import { Component } from "react";
+import { nanoid } from 'nanoid';
 
 class LoginForm extends Component{
 
     state = {
-        contacts: [],
+        contacts: [{id:1, name:"Katya", number:"4949165"}],
         filter: '',
         name: '',
         number: ''
@@ -18,7 +19,13 @@ class LoginForm extends Component{
 
     handleSubmit = event => {
         event.preventDefault();
-        console.log(this.state)
+        const newContact = { id: nanoid(), name: this.state.name  ,number: this.state.number}
+
+        this.setState(prevState => ({
+            contacts: [...prevState.contacts, newContact]
+        })
+          
+        )
       
     }
 
