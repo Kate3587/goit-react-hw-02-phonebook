@@ -46,15 +46,13 @@ class App extends Component {
   };
   
   render() {
-    const { name, number, contacts, filter } = this.state;
+    const { contacts, filter } = this.state;
     const filteredUsers = contacts.filter(item => item.name.toLowerCase().includes(filter.toLowerCase()));
 
     return (
       <PhonebookWrapper>
         <MainBookTitle>Phonebook</MainBookTitle>
         <ContactForm
-          name={name}
-          number={number}
           onSubmit = {this.formSubmitHandler}
         />
         <div>

@@ -1,5 +1,6 @@
 import React from "react";
 import { Component } from "react";
+import PropTypes from 'prop-types';
 import {PhoneForm, FormLabel, FormInput, FormBtn} from './ContactForm.styled'
 
 class ContactForm extends Component{
@@ -22,9 +23,9 @@ class ContactForm extends Component{
       this.reset();
     };
 
-    reset = () => {
-        this.setState({ name: '', number: '' })
-    }
+  reset = () => {
+    this.setState({ name: '', number: '' })
+  };
 
     render() {
         const { name, number } = this.state;
@@ -66,3 +67,7 @@ class ContactForm extends Component{
 };
 
 export default ContactForm;
+
+ContactForm.propTypes = {
+  onSubmit: PropTypes.func.isRequired,
+};
