@@ -16,8 +16,6 @@ const ContactList = ({ filterForUsers, onDeleteUsers }) => {
         }
     </ul>
     )
-    
-
 };
 
 export default ContactList;

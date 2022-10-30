@@ -9,8 +9,7 @@ export const PhonebookWrapper = styled.div`
     margin-right: auto;
     margin-bottom: 30px;
     border-radius: 10px;
-    /* background-color: #daf1ff; */
-     background-image: linear-gradient(
+    background-image: linear-gradient(
     to bottom,
     #e1f5ff,
     #502cbadc
@@ -34,5 +33,4 @@ export const BookTitle = styled.h2`
     font-weight: 600;
     text-align: center;
     color: #2c0040;
-
 `;

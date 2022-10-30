@@ -1,12 +1,9 @@
-// import LoginForm from '../LoginForm/LoginForm';
 import { Component } from "react";
 import { nanoid } from 'nanoid';
 import ContactForm from '../ContactForm/ContactForm';
 import Filter from '../Filter/Filter';
 import ContactList from '../ContactList/ContactList';
 import { PhonebookWrapper, MainBookTitle, BookTitle} from './App.styled';
-// import Contacts from '../../data/usersContacts';
-
 
 class App extends Component {
   state = {
@@ -15,19 +12,25 @@ class App extends Component {
   };
 
   formSubmitHandler = data => {
-    console.log(data);
-    const newContact = {
-      id: nanoid(),
-      name: data.name,
-      number: data.number,
-    };
-     console.log(newContact)
+    const contactUniq = this.state.contacts.map(item => item.name).filter(name => name.toLowerCase() === data.name.toLowerCase())
 
-    this.setState(prevState => ({
-        contacts: [...prevState.contacts, newContact],
-    }))
-    
-  }
+    if (
+      contactUniq.length === 0
+    ) {
+      const newContact = {
+        id: nanoid(),
+        name: data.name,
+        number: data.number,
+      };
+      this.setState(prevState => (
+        {
+          contacts: [...prevState.contacts, newContact],
+        }))
+    } else {
+      alert(contactUniq + 'is alrady in contacts.')
+    }
+  };
+
     
   handleFilter = event => {
     this.setState({
@@ -53,7 +56,6 @@ class App extends Component {
           name={name}
           number={number}
           onSubmit = {this.formSubmitHandler}
-          
         />
         <div>
           <BookTitle>Contacts</BookTitle>
@@ -61,13 +63,11 @@ class App extends Component {
             inputLabel="Find contacts by name"
             onChangeFilter={this.handleFilter}
             value={filter}
-           
           />
           <ContactList
             filterForUsers={filteredUsers}
             onDeleteUsers ={this.handleDeleteUser}
           />         
-                    
         </div>
       </PhonebookWrapper>
     )

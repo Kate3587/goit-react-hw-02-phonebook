@@ -1,7 +1,7 @@
 import React from "react";
 import { FilterLabel, FilterInput, FilterWrap } from './Filter.styled';
 
-const Filter = ({ inputLabel, onChangeFilter, value,}) =>(
+const Filter = ({ inputLabel, onChangeFilter, value}) =>(
     <FilterWrap>
          <FilterLabel htmlFor={inputLabel}>
             Find contacts by name
@@ -18,10 +18,6 @@ const Filter = ({ inputLabel, onChangeFilter, value,}) =>(
             placeholder="Search username"
         />
     </FilterWrap>
-       
 );
     
-       
-    
-
 export default Filter;

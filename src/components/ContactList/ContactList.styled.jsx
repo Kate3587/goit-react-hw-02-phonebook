@@ -1,7 +1,5 @@
 import styled from "styled-components";
 
-
-
 export const ItemName = styled.div`
     margin-bottom: 2px;
     width: 250px;
@@ -11,7 +9,6 @@ export const ItemName = styled.div`
 
     margin-left: auto;
     margin-right: auto;
-    
 `;
 
 export const ContactBtn = styled.div`   
@@ -25,6 +22,4 @@ export const ContactBtn = styled.div`
     background-color: #aea7f6;
     margin-right: auto;
     margin-left: 60px;
-    
-
 `;
