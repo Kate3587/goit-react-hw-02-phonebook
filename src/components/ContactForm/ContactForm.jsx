@@ -1,24 +1,26 @@
 import React from "react";
 import { Component } from "react";
+import {PhoneForm, FormLabel, FormInput, FormBtn} from './ContactForm.styled'
 
 class ContactForm extends Component{
-   
 
     state = {
         name: '',
         number: '', 
-        
     };
    
 
     handleChange = event => {
     const { name, value } = event.target
-    console.log(event.target.value);
     this.setState({ [name]: value });
     };
 
     handleSubmit = event => {
+        
         event.preventDefault();
+        console.log(this.state)
+       
+
         this.props.onSubmit(this.state)
 
         this.reset();
@@ -33,11 +35,11 @@ class ContactForm extends Component{
 
         return (
             <form onSubmit={this.handleSubmit}>
-          <div>
-            <label htmlFor="input Name">
+          <PhoneForm>
+            <FormLabel htmlFor="input Name">
               Name
-            </label>
-            <input
+            </FormLabel>
+            <FormInput
               onChange={this.handleChange}
               type="text"
               value={name}
@@ -46,11 +48,11 @@ class ContactForm extends Component{
               title="Name may contain only letters, apostrophe, dash and spaces. For example Adrian, Jacob Mercer, Charles de Batz de Castelmore d'Artagnan"
               required
               placeholder="Name"
-            />
-            <label htmlFor="input Name">
+              />
+            <FormLabel htmlFor="input Name">
               Number
-            </label>
-            <input
+            </FormLabel>
+            <FormInput
               onChange={this.handleChange}
               type="tel"
               name="number"
@@ -59,9 +61,9 @@ class ContactForm extends Component{
               title="Phone number must be digits and can contain spaces, dashes, parentheses and can start with +"
               required
               placeholder="Number"
-            />
-            <button type="submit">Add Contact</button>
-          </div>
+              />
+            <FormBtn type="submit">Add Contact</FormBtn>
+          </PhoneForm>
         </form>
         )
     }

@@ -4,6 +4,7 @@ import { nanoid } from 'nanoid';
 import ContactForm from '../ContactForm/ContactForm';
 import Filter from '../Filter/Filter';
 import ContactList from '../ContactList/ContactList';
+import { PhonebookWrapper, MainBookTitle, BookTitle} from './App.styled';
 // import Contacts from '../../data/usersContacts';
 
 
@@ -15,7 +16,11 @@ class App extends Component {
 
   formSubmitHandler = data => {
     console.log(data);
-    const newContact = { id: nanoid(), name: data.name, number: data.number };
+    const newContact = {
+      id: nanoid(),
+      name: data.name,
+      number: data.number,
+    };
      console.log(newContact)
 
     this.setState(prevState => ({
@@ -23,18 +28,14 @@ class App extends Component {
     }))
     
   }
-  
-  
-  
+    
   handleFilter = event => {
-    console.log(this.state)
     this.setState({
       filter: event.target.value
     })
   };
 
   handleDeleteUser = (id) => {
-    console.log(id);
     this.setState(prevState => (
       {
         contacts: prevState.contacts.filter(item => item.id !== id)
@@ -46,8 +47,8 @@ class App extends Component {
     const filteredUsers = contacts.filter(item => item.name.toLowerCase().includes(filter.toLowerCase()));
 
     return (
-      <div>
-        <h1>Phonebook</h1>
+      <PhonebookWrapper>
+        <MainBookTitle>Phonebook</MainBookTitle>
         <ContactForm
           name={name}
           number={number}
@@ -55,7 +56,7 @@ class App extends Component {
           
         />
         <div>
-          <h2>Contacts</h2>
+          <BookTitle>Contacts</BookTitle>
           <Filter
             inputLabel="Find contacts by name"
             onChangeFilter={this.handleFilter}
@@ -68,8 +69,7 @@ class App extends Component {
           />         
                     
         </div>
-      </div>
-    
+      </PhonebookWrapper>
     )
   };
 };

@@ -1,18 +1,17 @@
 import React from "react";
 import { nanoid } from 'nanoid';
+import {ItemName, ContactBtn} from './ContactList.styled';
 
 const ContactList = ({ filterForUsers, onDeleteUsers }) => {
-    // const id = nanoid()
     return (
         <ul>
         {
             filterForUsers.map(({ name, number, id }) => (
-                <li
+                <div
                     key={nanoid()}>
-                {/* > */}
-                    <span>{name}: {number}</span>
-                    <button onClick={() => onDeleteUsers(id)} type="button">Delete</button>
-                </li>
+                    <ItemName>{name}: {number}</ItemName>
+                    <ContactBtn onClick={() => onDeleteUsers(id)} type="button">Delete</ContactBtn>
+                </div>
             ))
         }
     </ul>
